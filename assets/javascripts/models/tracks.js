@@ -32,6 +32,8 @@ var Tracks = new Instance({
       var first_name = Tracks.get("name")
     }
 
+    console.log(response);
+
     $("#track-holder").css({"opacity": "1"});
     $(".usr-input").css({"color": "#72cc36"});
     $("#track-holder").transition({ x: -2000, delay: 200 }, 700, "ease");
