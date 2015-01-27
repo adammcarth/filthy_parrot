@@ -1,0 +1,1 @@
+[ ![Codeship Status for adammcarth/filthy_parrot](https://codeship.com/projects/220dcfa0-8867-0132-158c-523596b2e83f/status?branch=master)](https://codeship.com/projects/59413)
