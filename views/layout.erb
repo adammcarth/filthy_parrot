@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml/DTD/xhtml-transitional.dtd">
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title><% if @page_title %><%= @page_title %><% else %>The Filthy Parrot<% end %></title>
+  <meta name="keywords" content="filthy,parrot,music,spotify,playlist,quiz,test"/>
+  <meta name="description" content="Think you have what it takes to become a music aficionado?"/>
+  <meta name="language" content="Ruby">
+  <meta name="environment" content="<%= settings.environment %>">
+  <meta property="og:title" content="Think you have what it takes to become a music aficionado?"/>
+  <meta property="og:site_name" content="Filthy Parrot"/>
+  <meta property="og:type" content="music"/>
+  <meta property="og:image" content="http://filthyparrot.net/filthy-parrot.png"/>
+  <!-- Fonts -->
+  <link href="http://fonts.googleapis.com/css?family=Crete+Round|Open+Sans" rel="stylesheet" type="text/css">
+  <!-- CSS Styles -->
+  <link rel="stylesheet" href="<%= stylesheet_path "application" %>" />
+  <% if @scenario %><link rel="stylesheet" href="<%= stylesheet_path "vectors/parrot-" + @scenario %>" /><% end %>
+  <!-- Favicon -->
+  <link rel="icon" href="<%= image_path "parrot-ballah.ico" %>" type="image/x-icon" />
+</head>
+
+<body>
+  <div id="container">
+
+    <%= yield.code_indent(4) %>
+
+  </div><!-- /.container -->
+  <!-- Non-Critical Javascript -->
+  <script type="text/javascript" src="<%= javascript_path "application" %>"></script>
+</body>
+</html>

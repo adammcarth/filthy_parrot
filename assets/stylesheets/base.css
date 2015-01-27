@@ -1,0 +1,49 @@
+body, html {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: rgba(23,139,171,1);
+  background: -moz-radial-gradient(center, ellipse cover, rgba(23,139,171,1) 0%, rgba(26,91,107,1) 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(23,139,171,1)), color-stop(100%, rgba(26,91,107,1)));
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(23,139,171,1) 0%, rgba(26,91,107,1) 100%);
+  background: -o-radial-gradient(center, ellipse cover, rgba(23,139,171,1) 0%, rgba(26,91,107,1) 100%);
+  background: -ms-radial-gradient(center, ellipse cover, rgba(23,139,171,1) 0%, rgba(26,91,107,1) 100%);
+  background: radial-gradient(ellipse at center, rgba(23,139,171,1) 0%, rgba(26,91,107,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#178bab', endColorstr='#1a5b6b', GradientType=1 );
+  color: #FFF;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#container {
+  width: 1200px;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+}
+
+.clear {
+  clear: both;
+}
+
+.grid-6 {
+  float: left;
+  width: 50%;
+  position: relative;
+}
+
+.defaultCursor {
+  cursor: default !important;
+}
+
+.defaultCursor button:hover {
+  cursor: default !important;
+}
+
+.defaultCursor input {
+  cursor: default !important;
+}

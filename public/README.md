@@ -1,0 +1,1 @@
+These SVG files have been base64 encoded and placed into stylesheets in `/assets/stylesheets/vectors/...`. The vector files here are not used by the actual application, and were just uploaded for the curious type :)

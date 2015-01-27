@@ -1,0 +1,61 @@
+<div class="grid-6" id="track-holder">
+  <div id="callout">
+    <h1><%= @name %>, listen up.</h1>
+    <p id="tagline"><%= render :partial => @scenario %></p>
+  </div>
+  <div id="tracks">
+    <!-- First Song -->
+    <div class="track" id="first-track">
+      <div class="track-num" id="ol_first">1.</div>
+      <input type="text" class="usr-input" id="1" name="[tracks]1" tabindex=1>
+      <a href="#track1Notes" class="msg-icon" id="openTrack1Notes" title="Add a note about this song..."></a>
+      <div id="track1Notes" class="white-popup mfp-hide">
+        <h3>ADD NOTE FOR TRACK 1:</h3>
+        <textarea class="track_notes" name="[trackNotes]1" placeholder="Why did you choose this song?"></textarea>
+        <!-- just closes the modal box -->
+        <button class="save-btn close_popup">Save</button>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <!-- Second Song -->
+    <div class="track" id="second-track">
+      <div class="track-num" id="ol_second">2.</div>
+      <input type="text" class="usr-input" id="2" name="[tracks]2" tabindex=2>
+      <a href="#track2Notes" class="msg-icon" id="openTrack2Notes" title="Add a note about this song..."></a>
+      <div id="track2Notes" class="white-popup mfp-hide">
+        <h3>Add a note about Track 2...</h3>
+        <textarea class="track_notes" name="[trackNotes]2" placeholder="Why did you choose this song?"></textarea>
+        <!-- just closes the modal box -->
+        <button class="save-btn close_popup">Save</button>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <!-- Third Song -->
+    <div class="track" id="third-track">
+      <div class="track-num" id="ol_third">3.</div>
+      <input type="text" class="usr-input" id="3" name="[tracks]3" tabindex=3>
+      <a href="#track3Notes" class="msg-icon" id="openTrack3Notes" title="Add a note about this song..."></a>
+      <div id="track3Notes" class="white-popup mfp-hide">
+        <h3>Add a note about Track 3...</h3>
+        <textarea class="track_notes" name="[trackNotes]3" placeholder="Why did you choose this song?"></textarea>
+        <!-- just closes the modal box -->
+        <button class="save-btn close_popup">Save</button>
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <button class="submit disabled" id="submit" disabled="disabled">See My Results</button>
+</div>
+
+<!-- SVG Parrot Illustration -->
+<div class="grid-6">
+  <div id="vector" class="parrot-<%= @scenario %>"></div>
+  <div class="clear"></div>
+</div>
+<div class="clear"></div>

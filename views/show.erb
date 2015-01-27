@@ -1,0 +1,19 @@
+<div class="grid-6">
+  <div id="callout">
+    <h1 style="color: #FFF;">We asked <%= @submission["name"] %>...</h1>
+    <p id="tagline"><%= @submission["scenario"] %></p>
+    <h1>...and they said:</h1>
+  </div>
+</div>
+
+<div class="grid-6">
+  <div class="parrot-looking-down"></div>
+  <div class="box">
+    <ol>
+      <li<% if @submission["track_1_notes"] %> title="<%= @submission["track_1_notes"] %>"<% end %>><%= @submission["track_1"] %></li>
+      <li<% if @submission["track_2_notes"] %> title="<%= @submission["track_2_notes"] %>"<% end %>><%= @submission["track_2"] %></li>
+      <li<% if @submission["track_3_notes"] %> title="<%= @submission["track_3_notes"] %>"<% end %>><%= @submission["track_3"] %></li>
+    </ol>
+  </div>
+</div>
+<div class="clear"></div>
