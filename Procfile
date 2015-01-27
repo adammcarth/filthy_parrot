@@ -1,1 +1,1 @@
-web: bundle exec rackup config.ru -p 80 -E development
+web: bundle exec rackup config.ru -p $PORT -E production
