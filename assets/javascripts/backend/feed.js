@@ -17,5 +17,5 @@ $(".answers li").on("click", function() {
       $(".answers li").removeClass("active");
       this.addClass("active");
     }
-  });
+  }, this);
 });
