@@ -7,8 +7,8 @@
   </div>
 
   <ul class="answers">
-    <% @submissions.each do |ref, submission| %>
-    <li id="<%= submission.id.split('/')[1] %>">
+    <% @submissions.each_with_index do |{ref, submission}, index| %>
+    <li id="<%= submission.id.split('/')[1] %>"<% if index == 0 %> class="active"<% end %>>
       <div class="name"><%= submission[:name] %></div>
       <div class="answer_preview">1. <%= submission[:track_1] %>, 2. <%= submission[:track_2] %>, 3. <%= submission[:track_3] %></div>
     </li>
@@ -21,12 +21,12 @@
   <div class="scenario"><%= @latest_submission[:scenario] %></div>
   <div class="votes">
     <ol>
-      <li><%= @latest_submission[:track_1] != "" %><% if @latest_submission[:track_1_notes] %>: <span><%= @latest_submission[:track_1_notes] %></span><% end %></li>
-      <li><%= @latest_submission[:track_2] != "" %><% if @latest_submission[:track_2_notes] %>: <span><%= @latest_submission[:track_2_notes] %></span><% end %></li>
-      <li><%= @latest_submission[:track_3] != "" %><% if @latest_submission[:track_3_notes] %>: <span><%= @latest_submission[:track_3_notes] %></span><% end %></li>
+      <li id="first"><%= @latest_submission[:track_1] != "" %><% if @latest_submission[:track_1_notes] %>: <span><%= @latest_submission[:track_1_notes] %></span><% end %></li>
+      <li id="second"><%= @latest_submission[:track_2] != "" %><% if @latest_submission[:track_2_notes] %>: <span><%= @latest_submission[:track_2_notes] %></span><% end %></li>
+      <li id="third"><%= @latest_submission[:track_3] != "" %><% if @latest_submission[:track_3_notes] %>: <span><%= @latest_submission[:track_3_notes] %></span><% end %></li>
     </ol>
   </div>
-  <div class="meta">Submitted <span class="timeAgo" title="<%= @latest_submission[:updated_at] %>"></span>. Code: <a href="/answers/<%= @latest_submission.id.split('/')[1] %>" target="_blank" title="Open in new tab..."><%= @latest_submission.id.split("/")[1] %></a></div>
+  <div class="meta">Submitted <span class="timeAgo" title="<%= @latest_submission[:updated_at] %>"></span>. Code: <a id="code" href="/answers/<%= @latest_submission.id.split('/')[1] %>" target="_blank" title="Open in new tab..."><%= @latest_submission.id.split("/")[1] %></a></div>
 </div>
 
 <div class="clear"></div>
