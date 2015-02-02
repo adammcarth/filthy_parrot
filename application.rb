@@ -137,7 +137,7 @@ class FilthyParrot < Sinatra::Base
 
     if params[:options][:load]
       track_lists = Orchestrate::Application.new(settings.orchestrate_api_key)["track_lists"]
-      submission = track_lists[params[:serial]]
+      submission = track_lists[params[:options][:load]]
       output_hash = { "id" => submission.id.split("/")[1], "name" => submission[:name], "scenario" => submission[:scenario],
                       "track_1" => submission[:track_1], "track_1_notes" => submission[:track_1_notes],
                       "track_2" => submission[:track_2], "track_2_notes" => submission[:track_2_notes],
@@ -145,6 +145,7 @@ class FilthyParrot < Sinatra::Base
                       "created_at" => submission[:created_at], "updated_at" => submission[:updated_at]
                     }
       output = output_hash.to_json
+      content_type :json
       "#{output}"
     end
   end
