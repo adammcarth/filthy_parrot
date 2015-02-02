@@ -1,0 +1,31 @@
+<div class="menu-icon">&#9776;</div>
+<div class="menu-close-icon">&times;</div>
+<div id="side_panel">
+  <div id="heading"><center>Answers</center></div>
+  <div id="search">
+    <input type="text" id="search_field" placeholder="Search..." tabindex="1" />
+  </div>
+
+  <ul class="answers">
+    <li class="active">
+      <div class="name">{{submission.name}}</div>
+      <div class="answer_preview">1. {{submission.track_1}}, 2. {{submission.track_2}}, 3. {{submission.track_3}}</div>
+    </li>
+  </ul>
+</div>
+
+<div id="content">
+  <div class="name_heading"><center>Tom:</center></div>
+  <div class="scenario">You're lost on a tropical island with no one to help you. It's over man. All you have for the next six months is an old iPod with 3 songs on it. What are they?</div>
+  <div class="votes">
+    <ol>
+      <li>Dream Koala - Odyssy</li>
+      <li>Boards of Canada - Olson</li>
+      <li>Childish Gambino - Sober</li>
+    </ol>
+  </div>
+  <p><%= @submissions %></p>
+  <div class="meta">Submitted 2 days ago. Code: <a href="/answers/qv61" target="_blank" title="Open in new tab...">qv6a</a></div>
+</div>
+
+<div class="clear"></div>

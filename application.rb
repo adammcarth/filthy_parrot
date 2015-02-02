@@ -8,7 +8,6 @@ class FilthyParrot < Sinatra::Base
   # Basic environment configuration settings
   set :root, File.dirname(__FILE__)
   set :views, Proc.new { File.join(root, "views") }
-  set :erb, :escape_html => true
   set :environment, ENV["RACK_ENV"]
   set :sprockets, Sprockets::Environment.new(root)
   set :assets_prefix, "/assets"
@@ -53,6 +52,10 @@ class FilthyParrot < Sinatra::Base
       else
         super
       end
+    end
+
+    def authenticate!
+
     end
   end
 
@@ -117,6 +120,26 @@ class FilthyParrot < Sinatra::Base
     else
       halt 404
     end
+  end
+
+  # Backend stuff
+  get "/feed" do
+    authenticate!
+
+    @submissions = Orchestrate::Application.new(settings.orchestrate_api_key)["track_lists"]
+    erb :"backend/feed", :layout => :"backend/layout"
+  end
+
+  get "/feed/api/:options" do
+    authenticate!
+  end
+
+  get "/login" do
+    erb :"backend/login", :layout => :"backend/layout"
+  end
+
+  post "/login" do
+
   end
 
 end
