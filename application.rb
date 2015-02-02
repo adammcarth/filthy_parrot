@@ -126,7 +126,8 @@ class FilthyParrot < Sinatra::Base
   get "/feed" do
     authenticate!
 
-    @submissions = Orchestrate::Application.new(settings.orchestrate_api_key)["track_lists"]
+    unordered_submissions = Orchestrate::Application.new(settings.orchestrate_api_key)["track_lists"]
+    @submissions = unordered_submissions.search("*").order(:updated_at).find
     erb :"backend/feed", :layout => :"backend/layout"
   end
 
