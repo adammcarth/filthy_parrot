@@ -135,9 +135,9 @@ class FilthyParrot < Sinatra::Base
   get "/feed/api" do
     authenticate!
 
-    if params[:options][:load]
+    if params[:load]
       track_lists = Orchestrate::Application.new(settings.orchestrate_api_key)["track_lists"]
-      submission = track_lists[params[:options][:load]]
+      submission = track_lists[params[:load]]
       output_hash = { "id" => submission.id.split("/")[1], "name" => submission[:name], "scenario" => submission[:scenario],
                       "track_1" => submission[:track_1], "track_1_notes" => submission[:track_1_notes],
                       "track_2" => submission[:track_2], "track_2_notes" => submission[:track_2_notes],
