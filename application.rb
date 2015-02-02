@@ -8,6 +8,7 @@ class FilthyParrot < Sinatra::Base
   # Basic environment configuration settings
   set :root, File.dirname(__FILE__)
   set :views, Proc.new { File.join(root, "views") }
+  set :erb, :escape_html => true
   set :environment, ENV["RACK_ENV"]
   set :sprockets, Sprockets::Environment.new(root)
   set :assets_prefix, "/assets"
