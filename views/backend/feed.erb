@@ -21,9 +21,9 @@
   <div class="scenario"><%= @latest_submission[:scenario] %></div>
   <div class="votes">
     <ol>
-      <li><%= @latest_submission[:track_1] %></li>
-      <li><%= @latest_submission[:track_2] %></li>
-      <li><%= @latest_submission[:track_3] %></li>
+      <li><%= @latest_submission[:track_1] %><% if @latest_submission[:track_1_notes] %>: <span><%= @latest_submission[:track_1_notes] %></span><% end %></li>
+      <li><%= @latest_submission[:track_2] %><% if @latest_submission[:track_2_notes] %>: <span><%= @latest_submission[:track_2_notes] %></span><% end %></li>
+      <li><%= @latest_submission[:track_3] %><% if @latest_submission[:track_3_notes] %>: <span><%= @latest_submission[:track_3_notes] %></span><% end %></li>
     </ol>
   </div>
   <div class="meta">Submitted <span class="timeAgo" title="<%= @latest_submission[:updated_at] %>"></span>. Code: <a href="/answers/<%= @latest_submission.id.split('/')[1] %>" target="_blank" title="Open in new tab..."><%= @latest_submission.id.split("/")[1] %></a></div>

@@ -121,6 +121,11 @@ ul.answers li .answer_preview {
   padding: 10px 0;
 }
 
+.votes ol li span {
+  font-size: 14px;
+  color: #9E9E9E;
+}
+
 .scenario {
   width: 80%;
   margin: 0px auto;
