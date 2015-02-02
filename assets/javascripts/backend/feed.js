@@ -12,7 +12,7 @@ function displaySubmission(id, success_callback) {
   query.done(function(submission) {
     if ( submission != undefined && submission != "" ) {
       // Display the new submission in the content area
-      $(".name-heading").html("<center>" + submission["name"] + "</center>");
+      $(".name_heading").html("<center>" + submission["name"] + "</center>");
       $(".scenario").html(submission["scenario"]);
       $("#first").html(submission["track_1"]);
       if ( submission["track_1_notes"] != "" ) { $("#first").append(": <span>" + submission["track_1_notes"] + "</span>"); }
