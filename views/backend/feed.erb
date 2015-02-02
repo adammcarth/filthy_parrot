@@ -26,7 +26,7 @@
       <li><%= @latest_submission[:track_3] %></li>
     </ol>
   </div>
-  <div class="meta">Submitted 2 days ago. Code: <a href="/answers/qv61" target="_blank" title="Open in new tab...">qv6a</a></div>
+  <div class="meta">Submitted <span class="timeAgo" title="<%= @latest_submission[:updated_at] %>"></span>. Code: <a href="/answers/<%= @latest_submission.id.split('/')[1] %>" target="_blank" title="Open in new tab..."><%= @latest_submission.id.split("/")[1] %></a></div>
 </div>
 
 <div class="clear"></div>
