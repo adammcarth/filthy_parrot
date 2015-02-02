@@ -111,7 +111,7 @@ class FilthyParrot < Sinatra::Base
     track_lists = Orchestrate::Application.new(settings.orchestrate_api_key)["track_lists"]
     @submission = track_lists[params[:serial]]
     if @submission
-      @page_title = "Adam's Answers"
+      @page_title = "#{@submission['name']}'s Answers"
       erb :show
     else
       halt 404
