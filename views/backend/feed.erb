@@ -17,13 +17,13 @@
 </div>
 
 <div id="content">
-  <div class="name_heading"><center>Tom:</center></div>
-  <div class="scenario">You're lost on a tropical island with no one to help you. It's over man. All you have for the next six months is an old iPod with 3 songs on it. What are they?</div>
+  <div class="name_heading"><center><%= @latest_submission[:name] %>:</center></div>
+  <div class="scenario"><%= @latest_submission[:scenario] %></div>
   <div class="votes">
     <ol>
-      <li>Dream Koala - Odyssy</li>
-      <li>Boards of Canada - Olson</li>
-      <li>Childish Gambino - Sober</li>
+      <li><%= @latest_submission[:track_1] %></li>
+      <li><%= @latest_submission[:track_2] %></li>
+      <li><%= @latest_submission[:track_3] %></li>
     </ol>
   </div>
   <div class="meta">Submitted 2 days ago. Code: <a href="/answers/qv61" target="_blank" title="Open in new tab...">qv6a</a></div>

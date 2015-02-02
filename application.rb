@@ -127,7 +127,8 @@ class FilthyParrot < Sinatra::Base
     authenticate!
 
     unordered_submissions = Orchestrate::Application.new(settings.orchestrate_api_key)["track_lists"]
-    @submissions = unordered_submissions.search("*").order(:updated_at).find
+    @submissions = unordered_submissions.search("*").order(:updated_at, :desc).find
+    @latest_submission = @submissions.first[1]
     erb :"backend/feed", :layout => :"backend/layout"
   end
 
