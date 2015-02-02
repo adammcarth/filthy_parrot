@@ -9,8 +9,8 @@ $(".answers li").on("click", function() {
 
   query.done(function(response) {
     if ( response != undefined && response != "" && response != "Internal Server Error" ) {
-      var submission = jQuery.parseJSON(response);
-      console.log(submission);
+      //var submission = jQuery.parseJSON(response);
+      console.log(response);
     }
   });
 });
