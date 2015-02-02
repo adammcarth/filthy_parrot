@@ -132,7 +132,7 @@ class FilthyParrot < Sinatra::Base
     erb :"backend/feed", :layout => :"backend/layout"
   end
 
-  get "/feed/api/:options" do
+  get "/feed/api" do
     authenticate!
 
     if params[:options][:load]
