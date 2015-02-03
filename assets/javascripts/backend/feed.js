@@ -42,9 +42,9 @@ $(".answers li").on("click", function() {
 });
 
 // Search for submissions
-$("#search_field").keypress(function() {
+$("#search_field").on("input", function() {
   var query = $.ajax({
-    url: "/feed/api?search=" + $("#search_field").val(),
+    url: "/feed/api?search=" + this.value,
     type: "GET"
   });
 
