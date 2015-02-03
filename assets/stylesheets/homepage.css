@@ -143,3 +143,92 @@ li.error {
   background: #D36E6E;
   border-radius: 3px;
 }
+
+/* Responsive Sterf */
+
+@media(max-width: 1290px) {
+  #callout h1 {
+    font-size: 60px;
+  }
+
+  #callout #tagline {
+    font-size: 20px;
+  }
+
+  .track-num {
+    font-size: 26px;
+  }
+
+  .usr-input {
+    font-size: 20px;
+  }
+
+  .submit {
+    font-size: 17px;
+    padding: 14px 21px;
+  }
+
+  #vector {
+    height: 440px;
+    float: none;
+    margin: 0px auto;
+  }
+
+  #container {
+    position: relative;
+    width: 100%;
+    padding-top: 50px;
+  }
+
+  .grid-6 {
+    float: none;
+    display: block;
+    width: 80%;
+    margin: 0px auto 70px auto;
+  }
+
+  .grid-6:after {
+    content: "";
+    clear: both;
+  }
+}
+
+@media(max-width: 600px) {
+  #callout h1 {
+    font-size: 50px;
+  }
+
+  #callout #tagline {
+    font-size: 18px;
+  }
+
+  .track-num {
+    font-size: 22px;
+  }
+
+  .usr-input {
+    font-size: 18px;
+  }
+
+  .submit {
+    font-size: 15px;
+    padding: 12px 18px;
+    margin-top: 20px;
+  }
+
+  #vector {
+    height: 380px;
+  }
+}
+
+@media(max-width: 600px) {
+  #vector {
+    height: 320px;
+  }
+}
+
+@media(max-width: 400px) {
+  #vector {
+    height: 250px;
+  }
+}
