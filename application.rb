@@ -153,9 +153,13 @@ class FilthyParrot < Sinatra::Base
       if params[:search] == ""
         params[:search] = "*"
       end
-      
+
       track_lists = Orchestrate::Application.new(settings.orchestrate_api_key)["track_lists"]
-      results = track_lists.search(params[:search]).find
+      if params[:search] == "*"
+        results = track_lists.search(params[:search]).order(:updated_at, :desc).find # order the entire list by date
+      else
+        results = track_lists.search(params[:search]).find # let orchestrate order by search result score
+      end
       output_hash = {}
 
       results.each do |ref, submission|
