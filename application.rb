@@ -97,13 +97,6 @@ class FilthyParrot < Sinatra::Base
       halt 400
     end
 
-    # Removes alison gold anchor tag from scenario (screws up meta data)
-    if params[:tagline].include? "<a "
-      gold_start = params[:tagline].split("<a ")[0]
-      gold_end = params[:tagline].split("</a>")[1]
-      params[:tagline] = gold_start + "Alison Gold track" + gold_end
-    end
-
     # Generate the 4 digit serial to identify the track list (used to record and display results)
     serial = rand(36**4).to_s(36)
     # Save the track list to the database. Will throw a 500 error if something goes wrong.

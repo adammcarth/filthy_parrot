@@ -19,7 +19,7 @@
 
 <div id="content">
   <div class="name_heading"><center><%=h @latest_submission[:name] %>:</center></div>
-  <div class="scenario"><%=h @latest_submission[:scenario] %></div>
+  <div class="scenario"><%= @latest_submission[:scenario] %></div>
   <div class="votes">
     <ol>
       <li id="first"><%=h @latest_submission[:track_1] != "" %><% if @latest_submission[:track_1_notes] %>: <span><%=h @latest_submission[:track_1_notes] %></span><% end %></li>
