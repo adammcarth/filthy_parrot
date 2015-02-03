@@ -1,0 +1,63 @@
+body#page-login {
+  background: rgba(23,139,171,1);
+  background: -moz-radial-gradient(center, ellipse cover, rgba(23,139,171,1) 0%, rgba(26,91,107,1) 100%);
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(23,139,171,1)), color-stop(100%, rgba(26,91,107,1)));
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(23,139,171,1) 0%, rgba(26,91,107,1) 100%);
+  background: -o-radial-gradient(center, ellipse cover, rgba(23,139,171,1) 0%, rgba(26,91,107,1) 100%);
+  background: -ms-radial-gradient(center, ellipse cover, rgba(23,139,171,1) 0%, rgba(26,91,107,1) 100%);
+  background: radial-gradient(ellipse at center, rgba(23,139,171,1) 0%, rgba(26,91,107,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#178bab', endColorstr='#1a5b6b', GradientType=1 );
+}
+
+.login {
+  width: 320px;
+  padding: 30px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.6);
+  margin: 100px auto;
+}
+
+.login input[type="text"], .login input[type="password"] {
+  font-size: 18px;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  background: #3A586E;
+  border: 1px solid #A2BFD0;
+  color: #D8EBF4;
+}
+
+.login button {
+  border: none;
+  outline: none;
+  background: #D56350;
+  border-bottom: 5px solid #BE4C39;
+  padding: 12px 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #F7EFEE;
+  font-size: 15px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+  float: right;
+}
+
+.login-error-message {
+  width: 320px;
+  border-radius: 4px;
+  margin: 20px auto;
+  color: #FFF;
+  padding: 10px;
+  background: #EF6C6C;
+}
+
+.login-success-message {
+  width: 320px;
+  border-radius: 4px;
+  margin: 20px auto;
+  color: #FFF;
+  padding: 10px;
+  background: #5FA953;
+}

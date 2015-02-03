@@ -1,0 +1,12 @@
+<form action="/feed/login" type="post">
+  <div class="login">
+    <p><input type="text" name="username" placeholder="Username" required="true"></p>
+    <p><input type="password" name="password" placeholder="Password" required="true"></p>
+    <button type="submit" id="attemptLogin">Login</button>
+    <div class="clear"></div>
+  </div>
+  <% if params[:error] %>
+    <div class="login-error-message">Incorrect username/password.</div>
+  <% end %>
+  <div class="clear"></div>
+</form>

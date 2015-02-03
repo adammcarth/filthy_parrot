@@ -13,6 +13,8 @@ class FilthyParrot < Sinatra::Base
   set :assets_prefix, "/assets"
   set :digest_assets, true
   set :orchestrate_api_key, "22edabfa-df07-400c-ba43-4d3444640600" # this will be changed, don't bother.
+  set :sessions, true
+  helpers Sinatra::Cookies
 
   # Error handling for development
   configure :development do
@@ -55,7 +57,9 @@ class FilthyParrot < Sinatra::Base
     end
 
     def authenticate!
-
+      if session[:user] == nil
+        redirect "/feed/login"
+      end
     end
   end
 
@@ -180,11 +184,25 @@ class FilthyParrot < Sinatra::Base
   end
 
   get "/login" do
+    @body_id = "page-login"
     erb :"backend/login", :layout => :"backend/layout"
   end
 
   post "/login" do
+    if params[:username] == "" || params[:username] == nil || params[:password] == "" || params[:password] == nil
+      redirect "/feed/login?error=1"
+    end
 
+    users = Orchestrate::Application.new(settings.orchestrate_api_key)["users"]
+    correct_username = users["1"]["username"]
+    correct_password = users["1"]["password"]
+
+    if params[:username] == correct_username && params[:password] == correct_password
+      session[:user] = correct_username
+      redirect "/feed"
+    else
+      redirect "/feed/login?error=1"
+    end
   end
 
 end

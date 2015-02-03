@@ -15,7 +15,7 @@
   <link rel="icon" href="<%= image_path "parrot-ninja.ico" %>" type="image/x-icon" />
 </head>
 
-<body>
+<body<% if @body_id %> id="<%= @body_id %>"<% end %>>
   <div id="container">
 
     <%= yield.code_indent(4) %>
