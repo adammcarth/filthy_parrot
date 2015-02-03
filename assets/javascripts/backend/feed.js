@@ -43,7 +43,11 @@ function displaySubmission(id, success_callback) {
 
 // Loads a specific set of results (triggered from the sidebar)
 $(document).on("click", ".answers li", function() {
-  displaySubmission(this.id);
+  displaySubmission(this.id, function() {
+    if ( window.innerWidth < 575 ) {
+      hideMenu();
+    }
+  });
 });
 
 // Search for submissions
@@ -67,4 +71,31 @@ $("#search_field").on("input", function() {
 
     $("ul.answers li").first().trigger("click");
   });
+});
+
+// Responsive stuff
+function showMenu() {
+  $(".menu-icon").hide();
+  $("#side_panel").css({"position": "absolute", "left": "-100%"});
+  $("#side_panel").show();
+  $("#side_panel").animate({"left": "0"}, 300, function() {
+    $(".menu-close-icon").show();
+  });
+}
+
+function hideMenu() {
+  $(".menu-close-icon").hide();
+  $("#side_panel").animate({"left": "-100%"}, 300, function() {
+    $("#side_panel").hide();
+    $("#side_panel").css({"position": "static", "left": "0"});
+    $(".menu-icon").show();
+  });
+}
+
+$(".menu-icon").click(function() {
+  showMenu();
+});
+
+$(".menu-close-icon").click(function() {
+  hideMenu();
 });
