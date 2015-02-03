@@ -39,7 +39,6 @@ function displaySubmission(id, success_callback) {
 
 // Loads a specific set of results (triggered from the sidebar)
 $(".answers li").on("click", function() {
-  console.log("init");
   displaySubmission(this.id);
 });
 
@@ -51,10 +50,17 @@ $("#search_field").on("input", function() {
   });
 
   query.done(function(results) {
-    console.log(results);
+    $("ul.answers").html();
+
     $.each(results, function(id, submission) {
-      console.log(id);
-      console.log(submission);
+      $("ul.answers").append("" +
+      "<li id='" + id + "'>" +
+        "<div class='name'>" + submission["name"] + "</div>" +
+        "<div class='answer_preview'>1. " + submission["track_1"] + ", 2. " + submission["track_2"] + ", 3. " + submission["track_3"] + "</div>" +
+      "</li>"
+      );
     });
+
+    //$("ul.answers li").first().trigger("click");
   });
 });
