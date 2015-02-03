@@ -22,9 +22,9 @@
   <div class="scenario"><%= @latest_submission[:scenario] %></div>
   <div class="votes">
     <ol>
-      <li id="first"><%=h @latest_submission[:track_1] %><% if @latest_submission[:track_1_notes] %>: <span><%=h @latest_submission[:track_1_notes] %></span><% end %></li>
-      <li id="second"><%=h @latest_submission[:track_2] %><% if @latest_submission[:track_2_notes] %>: <span><%=h @latest_submission[:track_2_notes] %></span><% end %></li>
-      <li id="third"><%=h @latest_submission[:track_3] %><% if @latest_submission[:track_3_notes] %>: <span><%=h @latest_submission[:track_3_notes] %></span><% end %></li>
+      <li id="first"><%=h @latest_submission[:track_1] %><% if @latest_submission[:track_1_notes] != "" %>: <span><%=h @latest_submission[:track_1_notes] %></span><% end %></li>
+      <li id="second"><%=h @latest_submission[:track_2] %><% if @latest_submission[:track_2_notes] != "" %>: <span><%=h @latest_submission[:track_2_notes] %></span><% end %></li>
+      <li id="third"><%=h @latest_submission[:track_3] %><% if @latest_submission[:track_3_notes] != "" %>: <span><%=h @latest_submission[:track_3_notes] %></span><% end %></li>
     </ol>
   </div>
   <div class="meta">Submitted <span class="timeAgo" title="<%= @latest_submission[:updated_at] %>"></span>. Code: <a id="code" href="/answers/<%= @latest_submission.id.split('/')[1] %>" target="_blank" title="Open in new tab..."><%= @latest_submission.id.split("/")[1] %></a></div>
