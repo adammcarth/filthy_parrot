@@ -4,17 +4,14 @@ $("document").ready(function() {
 });
 
 function displaySubmission(id, success_callback) {
-  console.log(1);
   var query = $.ajax({
     url: "/feed/api?load=" + id,
     type: "GET"
   });
 
-  console.log(2);
   query.done(function(submission) {
     if ( submission != undefined && submission != "" ) {
       // Display the new submission in the content area
-      console.log(3);
       $(".name_heading").html("<center>" + submission["name"] + "</center>");
       $(".scenario").html(submission["scenario"]);
       $("#first").html(submission["track_1"]);
@@ -27,11 +24,11 @@ function displaySubmission(id, success_callback) {
       $(".meta .timeAgo").html(jQuery.timeago(submission["updated_at"]));
       $("#code").prop("href", "/answers/" + submission["id"]);
       $("#code").html(submission["id"]);
-      console.log(4);
+
       // Finally, deal with side bar classes
       $(".answers li").removeClass("active");
       $("#" + id).addClass("active");
-      console.log(5);
+
       // All done.
       if ( success_callback ) {
         success_callback();
@@ -55,5 +52,9 @@ $("#search_field").on("input", function() {
 
   query.done(function(results) {
     console.log(results);
+    $.each(results, function(id, submission) {
+      console.log(id);
+      console.log(submission);
+    });
   });
 });
