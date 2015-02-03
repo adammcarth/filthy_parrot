@@ -50,7 +50,7 @@ $("#search_field").on("input", function() {
   });
 
   query.done(function(results) {
-    $("ul.answers").html();
+    $("ul.answers").html("");
 
     $.each(results, function(id, submission) {
       $("ul.answers").append("" +
