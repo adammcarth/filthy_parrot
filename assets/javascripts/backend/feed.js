@@ -4,6 +4,8 @@ $("document").ready(function() {
 });
 
 function displaySubmission(id, success_callback) {
+  $("#content").css({"opacity": "0.2"});
+
   var query = $.ajax({
     url: "/feed/api?load=" + id,
     type: "GET"
@@ -30,6 +32,8 @@ function displaySubmission(id, success_callback) {
       $("#" + id).addClass("active");
 
       // All done.
+      $("#content").css({"opacity": "1"});
+
       if ( success_callback ) {
         success_callback();
       }
@@ -38,7 +42,7 @@ function displaySubmission(id, success_callback) {
 }
 
 // Loads a specific set of results (triggered from the sidebar)
-$(document).on("click", ".answers li", function(){ 
+$(document).on("click", ".answers li", function() {
   displaySubmission(this.id);
 });
 
