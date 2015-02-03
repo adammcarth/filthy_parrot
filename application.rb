@@ -135,6 +135,8 @@ class FilthyParrot < Sinatra::Base
   get "/feed/api" do
     authenticate!
 
+    output = "{}"
+
     if params[:load]
       track_lists = Orchestrate::Application.new(settings.orchestrate_api_key)["track_lists"]
       submission = track_lists[params[:load]]
@@ -145,8 +147,6 @@ class FilthyParrot < Sinatra::Base
                       "created_at" => submission[:created_at], "updated_at" => submission[:updated_at]
                     }
       output = output_hash.to_json
-      content_type :json
-      "#{output}"
     end
 
     if params[:search]
@@ -172,9 +172,11 @@ class FilthyParrot < Sinatra::Base
       end
 
       output = output_hash.to_json
-      content_type :json
-      "#{output}"
     end
+
+    # Output the JSON data
+    content_type :json
+    "#{output}"
   end
 
   get "/login" do
