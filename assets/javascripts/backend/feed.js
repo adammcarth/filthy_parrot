@@ -44,7 +44,7 @@ function displaySubmission(id, success_callback) {
 // Loads a specific set of results (triggered from the sidebar)
 $(document).on("click", ".answers li", function() {
   displaySubmission(this.id, function() {
-    if ( window.innerWidth < 575 ) {
+    if ( window.innerWidth < 575 && $("#search_field").not(":focus") ) {
       hideMenu();
     }
   });
