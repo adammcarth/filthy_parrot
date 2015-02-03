@@ -56,6 +56,10 @@ class FilthyParrot < Sinatra::Base
       end
     end
 
+    def h(text)
+      Rack::Utils.escape_html(text)
+    end
+
     def authenticate!
       if session[:user] == nil
         redirect "/login"
@@ -91,6 +95,13 @@ class FilthyParrot < Sinatra::Base
     # Check the bare minimum parameters exist
     if params["tracks"]["1"] == "" || params["tracks"]["1"] == nil || params["tracks"]["2"] == "" || params["tracks"]["2"] == nil || params["tracks"]["3"] == "" || params["tracks"]["3"] == nil ||  params["name"] == "" || params["name"] == nil || params["tagline"] == "" || params["tagline"] == nil
       halt 400
+    end
+
+    # Removes alison gold anchor tag from scenario (screws up meta data)
+    if params[:tagline].include? "<a "
+      gold_start = params[:tagline].split("<a ")[0]
+      gold_end = params[:tagline].split("</a>")[1]
+      params[:tagline] = gold_start + "Alison Gold track" + gold_end
     end
 
     # Generate the 4 digit serial to identify the track list (used to record and display results)

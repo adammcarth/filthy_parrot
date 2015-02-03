@@ -6,8 +6,8 @@
   <title><% if @page_title %><%= @page_title %><% else %>The Filthy Parrot<% end %></title>
   <meta name="keywords" content="filthy,parrot,music,spotify,playlist,quiz,test"/>
   <% if @submission %>
-  <meta property="og:title" content="Dude, see what <%= @submission['name'] %> said..."/>
-  <meta name="description" content="&ldquo;<%= @submission['scenario'] %>&rdquo;"/>
+  <meta property="og:title" content="Dude, see what <%=h @submission['name'] %> said..."/>
+  <meta name="description" content="&ldquo;<%=h @submission['scenario'] %>&rdquo;"/>
   <% else %>
   <meta property="og:title" content="The Filthy Parrot"/>
   <meta name="description" content="Think you have what it takes to become a music aficionado?"/>
