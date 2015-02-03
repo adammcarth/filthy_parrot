@@ -1,1 +1,0 @@
-web: ORCHESTRATE_API_KEY=22edabfa-df07-400c-ba43-4d3444640600 bundle exec rackup config.ru -p $PORT -E production
