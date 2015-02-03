@@ -38,7 +38,7 @@ function displaySubmission(id, success_callback) {
 }
 
 // Loads a specific set of results (triggered from the sidebar)
-$(".answers li").on("click", function() {
+$(document).on("click", ".answers li", function(){ 
   displaySubmission(this.id);
 });
 
@@ -61,6 +61,6 @@ $("#search_field").on("input", function() {
       );
     });
 
-    //$("ul.answers li").first().trigger("click");
+    $("ul.answers li").first().trigger("click");
   });
 });
