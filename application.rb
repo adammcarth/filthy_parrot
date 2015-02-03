@@ -150,10 +150,6 @@ class FilthyParrot < Sinatra::Base
     end
 
     if params[:search]
-      if params[:search] == ""
-        "{}"
-      end
-
       track_lists = Orchestrate::Application.new(settings.orchestrate_api_key)["track_lists"]
       results = track_lists.search(params[:search]).find
       output_hash = {}

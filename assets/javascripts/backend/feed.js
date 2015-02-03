@@ -42,7 +42,7 @@ $(".answers li").on("click", function() {
 });
 
 // Search for submissions
-$("#search_field").keydown(function() {
+$("#search_field").keyup(function() {
   var query = $.ajax({
     url: "/feed/api?search=" + $("#search_field").val(),
     type: "GET"
