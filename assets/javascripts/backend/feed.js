@@ -24,6 +24,7 @@ function displaySubmission(id, success_callback) {
       $("#third").html(submission["track_3"]);
       if ( submission["track_3_notes"] != "" ) { $("#third").append(": <span>" + submission["track_3_notes"] + "</span>"); }
       $(".meta .timeAgo").prop("title", submission["updated_at"]);
+      $(".meta .timeAgo").html(jQuery.timeago(submission["updated_at"]));
       $("#code").prop("href", "/answers/" + submission["id"]);
       $("#code").html(submission["id"]);
       console.log(4);
