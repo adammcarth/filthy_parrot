@@ -58,7 +58,7 @@ class FilthyParrot < Sinatra::Base
 
     def authenticate!
       if session[:user] == nil
-        redirect "/feed/login"
+        redirect "/login"
       end
     end
   end
@@ -190,7 +190,7 @@ class FilthyParrot < Sinatra::Base
 
   post "/login" do
     if params[:username] == "" || params[:username] == nil || params[:password] == "" || params[:password] == nil
-      redirect "/feed/login?error=1"
+      redirect "/login?error=1"
     end
 
     users = Orchestrate::Application.new(settings.orchestrate_api_key)["users"]
@@ -201,7 +201,7 @@ class FilthyParrot < Sinatra::Base
       session[:user] = correct_username
       redirect "/feed"
     else
-      redirect "/feed/login?error=1"
+      redirect "/login?error=1"
     end
   end
 
