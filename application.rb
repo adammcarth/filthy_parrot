@@ -12,7 +12,7 @@ class FilthyParrot < Sinatra::Base
   set :sprockets, Sprockets::Environment.new(root)
   set :assets_prefix, "/assets"
   set :digest_assets, true
-  set :orchestrate_api_key, "22edabfa-df07-400c-ba43-4d3444640600" # this will be changed, don't bother.
+  set :orchestrate_api_key, ENV["ORCHESTRATE_API_KEY"]
   set :sessions, true
   helpers Sinatra::Cookies
 
