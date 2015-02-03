@@ -21,7 +21,7 @@ function displaySubmission(id, success_callback) {
       $("#third").html(submission["track_3"]);
       if ( submission["track_3_notes"] != "" ) { $("#third").append(": <span>" + submission["track_3_notes"] + "</span>"); }
       $(".meta .timeAgo").prop("title", submission["updated_at"]);
-      $(".timeAgo").timeago();
+      $(".meta .timeAgo").html(jQuery.timeago(submission["updated_at"]));
       $("#code").prop("href", "/answers/" + submission["id"]);
       $("#code").html(submission["id"]);
 
@@ -40,4 +40,16 @@ function displaySubmission(id, success_callback) {
 // Loads a specific set of results (triggered from the sidebar)
 $(".answers li").on("click", function() {
   displaySubmission(this.id);
+});
+
+// Search for submissions
+$("#search_field").keydown(function() {
+  var query = $.ajax({
+    url: "/feed/api?search=" + $("#search_field").val(),
+    type: "GET"
+  });
+
+  query.done(function(results) {
+    console.log(results);
+  });
 });
