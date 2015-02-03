@@ -28,6 +28,10 @@ class FilthyParrot < Sinatra::Base
     sprockets.append_path File.join(root, "assets", "stylesheets")
     sprockets.append_path File.join(root, "assets", "javascripts")
     sprockets.append_path File.join(root, "assets", "images")
+    if ENV["RACK_ENV"] == "production"
+      sprockets.js_compressor  = YUI::JavaScriptCompressor.new
+      sprockets.css_compressor = YUI::CssCompressor.new
+    end
 
     # Configure Sprockets::Helpers
     Sprockets::Helpers.configure do |config|
