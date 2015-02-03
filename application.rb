@@ -163,10 +163,11 @@ class FilthyParrot < Sinatra::Base
                                                 }
 
         }
-        output = output_hash.to_json
-        content_type :json
-        "#{output}"
       end
+
+      output = output_hash.to_json
+      content_type :json
+      "#{output}"
     end
   end
 
