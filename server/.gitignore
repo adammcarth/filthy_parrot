@@ -1,0 +1,3 @@
+# Contains no sensitive data, just not changed frequently enough for version control practicality.
+# File is not executed from here, anyway.
+./deploy.sh
