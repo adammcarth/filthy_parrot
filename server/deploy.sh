@@ -10,12 +10,13 @@ app_dir="/var/www"
 github_username="adammcarth"
 git_repo="filthy_parrot"
 
-log_files="/var/www/server/logs"
-archive_log_files= "/var/logs_archive"
-app_install_commands="gem install bundler; bundle install"
-app_terminate_commands="cat /var/www/server/tmp/pids/unicorn.pid | xargs kill -QUIT"
+log_files="/var/www/server/log"
+archive_log_files= "/var/server_log_archive"
+
+app_install_commands="bundle install"
 app_startup_commands="ORCHESTRATE_API_KEY=$ORCHESTRATE_API_KEY bundle exec unicorn config.ru -c /var/www/server/unicorn.rb -E production -D"
 post_startup_commands="sudo scp '$app_dir/server/nginx.conf' /etc/nginx/nginx.conf; sudo service nginx restart"
+app_terminate_commands="cat /var/www/server/tmp/pids/unicorn.pid | xargs kill -QUIT"
 
 ##### SCRIPT [Leave Me] ######
 
