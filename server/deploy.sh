@@ -33,6 +33,9 @@ app_failed=$app_dir"_failed"
 echo -e "${Bold}==== DEPLOYMENT STARTING ====${Clear}"
 echo
 
+# Exit on error
+set -e
+
 echo -e "${Bold}01. Cleaning '/var' directory...${Clear}"
 cd $app_dir
 cd ../
@@ -68,6 +71,9 @@ sudo mv $app_pending $app_dir
 echo
 echo -e "${Bold}..."
 echo
+
+# We'll handle the errors from this point onwards.
+set +e
 
 echo -e "${Bold}09. Starting new application...${Clear}"
 cd $app_dir
