@@ -20,77 +20,77 @@ app_terminate_commands="cat /var/www/server/tmp/pids/unicorn.pid | xargs kill -Q
 
 ##### SCRIPT [Leave Me] ######
 
-bold=`tput bold`
-Red='\033[0;31m'
+Bold='\033[1m'
+Red='\033[1;31m'
 Yel='\033[1;33m'
-Gre='\033[0;32m'
-RCol='\033[0m'
+Gre='\033[1;32m'
+Clear='\033[0m'
 if [ -z $GIT_BRANCH ]; then git_branch="master"; else git_branch=$GIT_BRANCH; fi
-app_old="$app_dir\_old"
-app_pending="$app_dir\_pending"
-app_failed="$app_dir\_failed"
+app_old=$app_dir"_old"
+app_pending=$app_dir"_pending"
+app_failed=$app_dir"_failed"
 
-echo "${bold}==== DEPLOYMENT STARTING ===="
+echo -e "${Bold}==== DEPLOYMENT STARTING ====${Clear}"
 echo
 
-echo "${bold}01. Cleaning '/var' directory..."
+echo -e "${Bold}01. Cleaning '/var' directory...${Clear}"
 cd $app_dir
 cd ../
 sudo rm -r -f $app_pending
 
-echo "${bold}02. Downloading latest version from $git_repo:$git_branch..."
+echo -e "${Bold}02. Downloading latest version from $git_repo:$git_branch...${Clear}"
 sudo git clone https://github.com/$github_username/$git_repo.git
 cd ./$git_repo
-git checkout -b $git_branch
+git checkout $git_branch -f
 cd ../
 
-echo "${bold}03. Unpacking files to temporary '$app_pending' directory..."
+echo -e "${Bold}03. Unpacking files to temporary '$app_pending' directory...${Clear}"
 sudo mv $git_repo $app_pending
 
-echo "${bold}04. Repairing permissions for '$app_pending'..."
+echo -e "${Bold}04. Repairing permissions for '$app_pending'...${Clear}"
 sudo chown -R $(whoami):$(whoami) $app_pending
 
-echo "${bold}05. Installing dependancies for new deployment..."
+echo -e "${Bold}05. Installing dependancies for new deployment...${Clear}"
 cd $app_pending
 $app_install_commands
 
-echo "${bold}06. Terminating current application..."
+echo -e "${Bold}06. Terminating current application...${Clear}"
 cd $app_dir
 $app_terminate_commands
 
-echo "${bold}07. Archiving old log files..."
+echo -e "${Bold}07. Archiving old log files...${Clear}"
 sudo mv $log_files "$archive_log_files/$(date +'%Y')/$(date +'%m')/$(date +'%d')/$(date +'%H')-$(date +'%M')/$(date +'%N')"
 
-echo "${bold}08. Replacing '$app_dir' with '$app_pending'..."
+echo -e "${Bold}08. Replacing '$app_dir' with '$app_pending'...${Clear}"
 sudo mv $app_dir $app_old
 sudo mv $app_pending $app_dir
 
 echo
-echo "${bold}..."
+echo -e "${Bold}..."
 echo
 
-echo "${bold}09. Starting new application..."
+echo -e "${Bold}09. Starting new application...${Clear}"
 cd $app_dir
 if $app_startup_commands; then
 	sudo rm -r $app_old
 	$post_startup_commands
-	echo "${bold}==== ${Gre}[APPLICATION NOW RUNNING!] $app_name has been deployed successfully :) ${RCol}===="
+	echo -e "${Gre}[APPLICATION NOW RUNNING] $app_name has been deployed successfully :)${Clear}"
 else
-	echo "  ${bold}${Red}[FAIL!] Couldn't start the application (${RCol}#1${Red}). ${Yel}Retrying..."
+	echo -e "  ${Bold}${Red}[FAIL!] Couldn't start the application (${Clear}#1${Red}): ${Yel}Retrying...${Clear}"
 	if $app_startup_commands; then
 		sudo rm -r $app_old
 		$post_startup_commands
-		echo "${bold}==== ${Gre}[APPLICATION NOW RUNNING!] $app_name has been deployed successfully :) ${RCol}===="
+		echo -e "${Gre}[APPLICATION NOW RUNNING] $app_name has been deployed successfully :)${Clear}"
 	else
-		echo "  ${bold}${Red}[FAIL!] Couldn't start the application (${RCol}#2${Red}). ${Yel}Reverting to previous build..."
+		echo -e "  ${Red}[FAIL] Couldn't start the application (${Clear}#2${Red}): ${Yel}Reverting to previous build...${Clear}"
 		sudo mv $app_dir $app_failed
 		sudo mv $app_old $app_dir
 		cd $app_dir
 		if $app_startup_commands; then
-			echo "${bold}${Yel}...Reverted to previous build successfully. The latest build could not be started, and is likely due to a runtime error on startup."
+			echo -e "${Yel}...Reverted to previous build successfully. The latest build could not be started, and is likely due to a runtime error on startup.${Clear}"
 			exit 0
 		else
-			echo "${bold}${Red}[Fatal Error!] Neither version of the application could be started. This is a most likely an issue on the server side, and requires immediate attention. No application is currently running."
+			echo -e "${Red}[Fatal Error] Neither version of the application could be started. This is a most likely an issue on the server side, and requires immediate attention. No application is currently running.${Clear}"
 			exit 0
 		fi
 	fi
