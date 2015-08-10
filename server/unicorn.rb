@@ -1,6 +1,6 @@
 # set path to app that will be used to configure unicorn,
 # note the trailing slash in this example
-@dir = "/var/www/filthy_parrot/"
+@dir = "/var/www/filthyparrot.net/"
 
 worker_processes 2
 working_directory @dir
